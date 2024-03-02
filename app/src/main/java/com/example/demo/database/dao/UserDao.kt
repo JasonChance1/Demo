@@ -26,8 +26,15 @@ interface UserDao {
     fun delete(vararg user: User)
 
     @Query("delete from user where id=:id")
-    fun deleteById(id:Int)
+    fun deleteById(id: Int)
 
     @Query("select * from user")
-    fun findAll():List<User>
+    fun findAll(): List<User>
+
+    /**
+     * 根据用户名查找用户
+     * @return 查找到的用户（可为空）
+     */
+    @Query("select * from user where username = :username limit 1")
+    fun findByUsername(username: String): User?
 }
