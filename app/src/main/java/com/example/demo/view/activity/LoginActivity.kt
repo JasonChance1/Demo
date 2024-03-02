@@ -1,20 +1,17 @@
 package com.example.demo.view.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import com.example.demo.R
 import com.example.demo.databinding.ActivityLoginBinding
 import com.example.demo.util.EasyDataStore
+import com.example.demo.view.base.BaseActivity
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : BaseActivity() {
     private lateinit var binding: ActivityLoginBinding
     override fun onCreate(savedInstanceState: Bundle?) {
-        val theme = EasyDataStore.getData("theme",R.style.AppTheme)
-        setTheme(theme)
-        binding = ActivityLoginBinding.inflate(layoutInflater)
 
         super.onCreate(savedInstanceState)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.login.setOnClickListener {
@@ -25,6 +22,5 @@ class LoginActivity : AppCompatActivity() {
             }
             recreate()
         }
-
     }
 }

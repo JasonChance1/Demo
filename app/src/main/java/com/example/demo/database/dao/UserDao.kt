@@ -8,7 +8,7 @@ import androidx.room.Update
 import com.example.demo.database.entity.User
 
 /**
- * @description:
+ * @description: 数据访问对象，用于对数据库的数据进行增删改查操作
  * @author yanglei
  * @date :2024/3/2
  * @version 1.0.0

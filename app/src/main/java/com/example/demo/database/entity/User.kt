@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 /**
- * @description:
+ * @description: 用户实体类
  * @author yanglei
  * @date :2024/3/2
  * @version 1.0.0
