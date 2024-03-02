@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?><!--自定义属性用-->
 <resources>
-
+    <attr name="backgroundColor" format="reference|color"/>
 </resources>

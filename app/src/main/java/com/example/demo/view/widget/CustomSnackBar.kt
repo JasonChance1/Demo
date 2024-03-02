@@ -20,17 +20,12 @@ import java.lang.ref.WeakReference
  * @param backgroundColorRes 提示的背景资源，可以传入自定义的背景样式
  */
 class CustomSnackBar(
-    context: Context,
-    private var textMessage: String = "",
-    private val type: SnackBarType = SnackBarType.NORMAL,
-    private val backgroundColorRes: Int? = null
+    private val context: Context,
+    private var msg: String,
+    private val iconRes: Int = R.drawable.vector_notice,
+    private val attachView: View? = null,
+    private val backgroundColorRes: Int? = null,
 ) {
-    private val iconRes = when (type) {
-        SnackBarType.COMPLETE -> R.drawable.baseline_check_circle_24
-        SnackBarType.ERROR -> R.drawable.vector_error
-        else -> R.drawable.vector_notice
-    }
-
     // 使用 context 的弱引用，避免内存泄漏
     private val contextRef = WeakReference(context)
 
@@ -49,17 +44,6 @@ class CustomSnackBar(
                     layout.setBackgroundColor(ContextCompat.getColor(it, android.R.color.transparent))
                 }
             }
-
-            addCallback(object : Snackbar.Callback() {
-                override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {
-                    super.onDismissed(transientBottomBar, event)
-                    dismiss()
-                }
-
-                override fun onShown(sb: Snackbar?) {
-                    super.onShown(sb)
-                }
-            })
         }
     }
 
@@ -74,17 +58,8 @@ class CustomSnackBar(
         } else null
     }
 
-    fun setMessage(msg: String) {
-        this.textMessage = msg
-        snackbarLayout.findViewById<TextView>(R.id.snackbar_text).text = msg
-        show()
-    }
-
     private fun setupSnackbar() {
-        snackbarLayout.findViewById<TextView>(R.id.snackbar_text).apply {
-            text = textMessage
-            textAlignment = View.TEXT_ALIGNMENT_CENTER
-        }
+        snackbarLayout.findViewById<TextView>(R.id.snackbar_text).text = msg
 
         val layoutParams = snackbarLayout.layoutParams as? FrameLayout.LayoutParams
             ?: FrameLayout.LayoutParams(
@@ -104,15 +79,37 @@ class CustomSnackBar(
             snackbarLayout.background =
                 ContextCompat.getDrawable(snackbarLayout.context, it)
         }
+        attachView?.let {
+            snackbar.anchorView = it
+        }
+
     }
 
-    fun show() {
+    private fun show() {
         snackbar.show()
     }
 
-    enum class SnackBarType {
-        NORMAL,
-        ERROR,
-        COMPLETE
+    fun show(attachView: View? = null, backgroundColorRes: Int? = null) {
+        CustomSnackBar(
+            context,
+            msg,
+            R.drawable.vector_notice,
+            attachView,
+            backgroundColorRes
+        ).show()
+    }
+
+    fun showError(attachView: View? = null, backgroundColorRes: Int? = null) {
+        CustomSnackBar(context, msg, R.drawable.vector_error, attachView, backgroundColorRes).show()
+    }
+
+    fun showSuccess(attachView: View? = null, backgroundColorRes: Int? = null) {
+        CustomSnackBar(
+            context,
+            msg,
+            R.drawable.baseline_check_circle_24,
+            attachView,
+            backgroundColorRes
+        ).show()
     }
 }

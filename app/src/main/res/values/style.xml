@@ -1,2 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <style name="InputStyle">
+        <item name="android:layout_height">@dimen/input_height</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@drawable/shape_input_frame</item>
+        <item name="android:paddingLeft">@dimen/padding_secondary</item>
+    </style>
+</resources>

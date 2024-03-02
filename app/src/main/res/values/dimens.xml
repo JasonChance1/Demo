@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="fab_margin">16dp</dimen>
     <dimen name="input_height">36dp</dimen>
     <dimen name="title_size">18sp</dimen>
     <dimen name="content_size">16sp</dimen>
+    <dimen name="corner_radius_primary">16dp</dimen>
+    <dimen name="corner_radius_secondary">8dp</dimen>
+    <dimen name="padding_primary">16dp</dimen>
+    <dimen name="padding_secondary">16dp</dimen>
+    <dimen name="margin_primary">16dp</dimen>
 </resources>

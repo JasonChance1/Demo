@@ -1,7 +1,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="@dimen/input_height"
+    android:layout_height="wrap_content"
     android:background="@drawable/shape_snackbar"
     android:padding="8dp">
 
@@ -26,6 +26,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:text="提示"
+            android:layout_gravity="center_horizontal"
             android:textAlignment="center" />
     </LinearLayout>
 </FrameLayout>
