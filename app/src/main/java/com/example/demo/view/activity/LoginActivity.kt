@@ -3,6 +3,7 @@ package com.example.demo.view.activity
 import android.content.Intent
 import android.os.Bundle
 import com.example.demo.database.AppDatabase
+import com.example.demo.database.entity.User
 import com.example.demo.databinding.ActivityLoginBinding
 import com.example.demo.util.EasyDataStore
 import com.example.demo.util.HttpUtil
@@ -68,7 +69,40 @@ class LoginActivity : BaseActivity() {
         }
 
         binding.toRegister.setOnClickListener {
-            startActivity(Intent(this, RegisterActivity::class.java))
+            binding.transformationLayout.startTransform()
+        }
+
+        binding.toolbar.setNavigationOnClickListener {
+            binding.transformationLayout.finishTransform()
+        }
+
+        binding.register.setOnClickListener {
+            val username = binding.registerUsername.text.toString().trim()
+            val password = binding.registerPassword.text.toString().trim()
+            val confirmPassword = binding.confirmPassword.text.toString().trim()
+
+            when {
+                username.isEmpty() -> CustomSnackBar(this, "请输入用户名").showError()
+                password.isEmpty() -> CustomSnackBar(this, "请输入密码").showError()
+                confirmPassword.isEmpty() -> CustomSnackBar(this, "请确认密码").showError()
+                password != confirmPassword -> CustomSnackBar(this, "两次密码不一致").showError()
+                else -> {
+                    userDao.findByUsername(username)?.let {
+                        CustomSnackBar(this, "该账号已被注册").showError()
+                    } ?: run {
+                        userDao.insert(
+                            User(
+                                0, username, password
+                            )
+                        )
+
+                        CustomSnackBar(this, "注册成功").showSuccess()
+                        binding.transformationLayout.finishTransform()
+                        binding.username.setText(username)
+                        binding.password.setText(password)
+                    }
+                }
+            }
         }
 
         binding.skip.setOnClickListener {
