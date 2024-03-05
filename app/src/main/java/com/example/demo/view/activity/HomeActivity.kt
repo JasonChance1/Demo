@@ -1,16 +1,16 @@
 package com.example.demo.view.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.example.demo.R
 import com.example.demo.adapter.ViewPagerAdapter
 import com.example.demo.databinding.ActivityHomeBinding
+import com.example.demo.view.base.BaseActivity
 import com.example.demo.view.fragment.HomeFragment
 import com.example.demo.view.fragment.MineFragment
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : BaseActivity() {
     private lateinit var binding: ActivityHomeBinding
     private val fragments = mutableListOf<Fragment>()
     override fun onCreate(savedInstanceState: Bundle?) {

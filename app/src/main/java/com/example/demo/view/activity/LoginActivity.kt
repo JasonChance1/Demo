@@ -6,7 +6,6 @@ import com.example.demo.database.AppDatabase
 import com.example.demo.database.entity.User
 import com.example.demo.databinding.ActivityLoginBinding
 import com.example.demo.util.EasyDataStore
-import com.example.demo.util.HttpUtil
 import com.example.demo.view.base.BaseActivity
 import com.example.demo.view.widget.CustomSnackBar
 
@@ -21,18 +20,28 @@ class LoginActivity : BaseActivity() {
 
         initView()
         bindEvent()
-//        binding.login.setOnClickListener {
-//            if (EasyDataStore.getData("theme", R.style.AppTheme_Night) == R.style.AppTheme_Night) {
-//                EasyDataStore.putData("theme", R.style.AppTheme)
-//            } else {
-//                EasyDataStore.putData("theme", R.style.AppTheme_Night)
-//            }
-//            recreate()
-//        }
     }
 
     private fun initView() {
-
+        val username = EasyDataStore.getData("username", "")
+        val password = EasyDataStore.getData("password", "")
+        if (EasyDataStore.getData("autoLogin", false)) {
+            binding.username.setText(username)
+            binding.password.setText(password)
+            binding.remember.isChecked = true
+            binding.autoLogin.isChecked = true
+            if (username.isNotEmpty() && password.isNotEmpty()) {
+                userDao.findByUsername(username)?.let {
+                    if (password == it.password) {
+                        startActivity(Intent(this, HomeActivity::class.java))
+                    }
+                }
+            }
+        } else if (EasyDataStore.getData("remember", false)) {
+            binding.username.setText(username)
+            binding.password.setText(password)
+            binding.remember.isChecked = true
+        }
     }
 
     private fun bindEvent() {

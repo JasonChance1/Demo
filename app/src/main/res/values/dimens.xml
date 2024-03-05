@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--    输入框高度-->
     <dimen name="input_height">36dp</dimen>
-    <dimen name="title_size">18sp</dimen>
-    <dimen name="content_size">16sp</dimen>
-    <dimen name="corner_radius_primary">16dp</dimen>
-    <dimen name="corner_radius_secondary">8dp</dimen>
+
+    <!--    文字大小-->
+    <dimen name="size1">18sp</dimen>
+    <dimen name="size2">16sp</dimen>
+    <dimen name="size3">14sp</dimen>
+
+    <!--    圆角半径-->
+    <dimen name="radius_primary">16dp</dimen>
+    <dimen name="radius_secondary">8dp</dimen>
+
+    <!--    边距-->
     <dimen name="padding_primary">16dp</dimen>
-    <dimen name="padding_secondary">16dp</dimen>
+    <dimen name="padding_secondary">8dp</dimen>
     <dimen name="margin_primary">16dp</dimen>
+    <dimen name="margin_secondary">8dp</dimen>
+
+    <!--    头像大小-->
+    <dimen name="avatar_size">80dp</dimen>
+    <dimen name="icon_size">16dp</dimen>
 </resources>

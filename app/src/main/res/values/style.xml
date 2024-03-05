@@ -1,9 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="InputStyle">
         <item name="android:layout_height">@dimen/input_height</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:background">@drawable/shape_input_frame</item>
         <item name="android:paddingLeft">@dimen/padding_secondary</item>
+    </style>
+
+    <style name="CircleAvatar">
+        <item name="android:layout_width">@dimen/avatar_size</item>
+        <item name="android:layout_height">@dimen/avatar_size</item>
+        <item name="shapeAppearance">@style/CircleImage</item>
+    </style>
+
+    <style name="Icon">
+        <item name="android:layout_width">@dimen/icon_size</item>
+        <item name="android:layout_height">@dimen/icon_size</item>
+        <item name="android:background">@color/transparent</item>
+    </style>
+
+    <style name="BaseCardView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="strokeWidth">0dp</item>
+        <item name="cardCornerRadius">@dimen/radius_secondary</item>
+        <item name="android:backgroundTint">?attr/colorSecondaryContainer</item>
+    </style>
+
+    <style name="TitleText1">
+        <item name="android:textSize">@dimen/size1</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="OnSecondaryTitle" parent="TitleText1">
+        <item name="android:textColor">?attr/colorOnSecondaryContainer</item>
+    </style>
+
+    <style name="OnSecondaryContent">
+        <item name="android:textColor">?attr/colorOnSecondaryContainer</item>
+        <item name="android:textSize">@dimen/size2</item>
+    </style>
+
+    <style name="CircleImage">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
     </style>
 </resources>
