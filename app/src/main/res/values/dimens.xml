@@ -20,5 +20,6 @@
 
     <!--    头像大小-->
     <dimen name="avatar_size">80dp</dimen>
+    <dimen name="small_avatar_size">60dp</dimen>
     <dimen name="icon_size">16dp</dimen>
 </resources>

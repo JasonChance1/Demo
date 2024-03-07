@@ -1,105 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="@dimen/padding_primary"
     tools:context=".view.fragment.MineFragment">
 
+<!--    <androidx.drawerlayout.widget.DrawerLayout-->
+<!--        android:id="@+id/drawerLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/userCard"
-        style="@style/BaseCardView">
+<!--        <androidx.appcompat.widget.LinearLayoutCompat-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:orientation="vertical"-->
+<!--            android:padding="@dimen/padding_primary">-->
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="@dimen/padding_primary">
+<!--            <com.google.android.material.card.MaterialCardView-->
+<!--                android:id="@+id/userCard"-->
+<!--                style="@style/BaseCardView">-->
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/avatar"
-                style="@style/CircleAvatar"
-                android:scaleType="centerCrop"
-                android:src="@drawable/img1" />
+<!--                <androidx.appcompat.widget.LinearLayoutCompat-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:padding="@dimen/padding_primary">-->
 
-            <TextView
-                android:id="@+id/nickName"
-                style="@style/OnSecondaryTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="@dimen/margin_primary"
-                android:text="@string/app_name" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
+<!--                    <com.google.android.material.imageview.ShapeableImageView-->
+<!--                        android:id="@+id/avatar"-->
+<!--                        style="@style/CircleAvatar"-->
+<!--                        android:scaleType="centerCrop"-->
+<!--                        android:src="@drawable/img1" />-->
 
-    </com.google.android.material.card.MaterialCardView>
+<!--                    <TextView-->
+<!--                        android:id="@+id/nickName"-->
+<!--                        style="@style/OnSecondaryTitle"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="center_vertical"-->
+<!--                        android:layout_marginStart="@dimen/margin_primary"-->
+<!--                        android:text="@string/app_name" />-->
+<!--                </androidx.appcompat.widget.LinearLayoutCompat>-->
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/themeCard"
-        style="@style/BaseCardView"
-        android:layout_marginTop="@dimen/margin_primary">
+<!--            </com.google.android.material.card.MaterialCardView>-->
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingHorizontal="@dimen/padding_secondary">
+<!--            <com.google.android.material.card.MaterialCardView-->
+<!--                android:id="@+id/themeCard"-->
+<!--                style="@style/BaseCardView"-->
+<!--                android:layout_marginTop="@dimen/margin_primary">-->
 
-            <ImageView
-                style="@style/Icon"
-                android:layout_gravity="center"
-                android:layout_marginEnd="@dimen/margin_secondary"
-                android:src="@drawable/vector_dark"
-                app:tint="?attr/colorOnSecondaryContainer" />
+<!--                <androidx.appcompat.widget.LinearLayoutCompat-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:paddingHorizontal="@dimen/padding_secondary">-->
 
-            <TextView
-                style="@style/OnSecondaryContent"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:text="@string/dark_theme"
-                android:textSize="@dimen/size2" />
+<!--                    <ImageView-->
+<!--                        style="@style/Icon"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:layout_marginEnd="@dimen/margin_secondary"-->
+<!--                        android:src="@drawable/vector_dark"-->
+<!--                        app:tint="?attr/colorOnSecondaryContainer" />-->
 
-            <com.google.android.material.materialswitch.MaterialSwitch
-                android:id="@+id/themeSwitch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end|center_vertical"
-                android:scaleX="0.6"
-                android:scaleY="0.6" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
-    </com.google.android.material.card.MaterialCardView>
+<!--                    <TextView-->
+<!--                        style="@style/OnSecondaryContent"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="center_vertical"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:text="@string/dark_theme"-->
+<!--                        android:textSize="@dimen/size2" />-->
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/exitCard"
-        style="@style/BaseCardView"
-        android:layout_marginTop="@dimen/margin_primary">
+<!--                    <com.google.android.material.materialswitch.MaterialSwitch-->
+<!--                        android:id="@+id/themeSwitch"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="end|center_vertical"-->
+<!--                        android:scaleX="0.6"-->
+<!--                        android:scaleY="0.6" />-->
+<!--                </androidx.appcompat.widget.LinearLayoutCompat>-->
+<!--            </com.google.android.material.card.MaterialCardView>-->
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="@dimen/padding_secondary">
+<!--            <com.google.android.material.card.MaterialCardView-->
+<!--                android:id="@+id/exitCard"-->
+<!--                style="@style/BaseCardView"-->
+<!--                android:layout_marginTop="@dimen/margin_primary">-->
 
-            <ImageView
-                style="@style/Icon"
-                android:layout_gravity="center"
-                android:layout_marginEnd="@dimen/margin_secondary"
-                android:src="@drawable/baseline_exit_to_app_24"
-                app:tint="?attr/colorOnSecondaryContainer" />
+<!--                <androidx.appcompat.widget.LinearLayoutCompat-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:padding="@dimen/padding_secondary">-->
 
-            <TextView
-                style="@style/OnSecondaryContent"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:text="@string/logout"
-                android:textSize="@dimen/size2" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
-    </com.google.android.material.card.MaterialCardView>
-</androidx.appcompat.widget.LinearLayoutCompat>
+<!--                    <ImageView-->
+<!--                        style="@style/Icon"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:layout_marginEnd="@dimen/margin_secondary"-->
+<!--                        android:src="@drawable/baseline_exit_to_app_24"-->
+<!--                        app:tint="?attr/colorOnSecondaryContainer" />-->
+
+<!--                    <TextView-->
+<!--                        style="@style/OnSecondaryContent"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="center_vertical"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:text="@string/logout"-->
+<!--                        android:textSize="@dimen/size2" />-->
+<!--                </androidx.appcompat.widget.LinearLayoutCompat>-->
+<!--            </com.google.android.material.card.MaterialCardView>-->
+<!--        </androidx.appcompat.widget.LinearLayoutCompat>-->
+<!--        -->
+<!--    </androidx.drawerlayout.widget.DrawerLayout>-->
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

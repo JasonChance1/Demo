@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,16 +7,164 @@
     android:orientation="vertical"
     tools:context=".view.activity.HomeActivity">
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewPager"
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawerLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"/>
+        android:layout_height="match_parent">
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="?attr/colorPrimaryContainer"
-        app:menu="@menu/bottom_navigation_menu" />
-</androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="?attr/colorSecondaryContainer"
+                android:padding="@dimen/padding_secondary">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/cover"
+                    style="@style/SmallAvatar"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img1" />
+
+                <TextView
+                    android:id="@+id/username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textColor="?attr/colorOnSecondaryContainer"
+                    android:layout_marginStart="@dimen/margin_secondary"
+                    android:text="测试" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_navigation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:backgroundTint="?attr/colorPrimaryContainer"
+                app:menu="@menu/bottom_navigation_menu" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navigationView"
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_primary">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/userCard"
+                    style="@style/BaseCardView">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/padding_primary">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/avatar"
+                            style="@style/CircleAvatar"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/img1" />
+
+                        <TextView
+                            android:id="@+id/nickName"
+                            style="@style/OnSecondaryTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="@dimen/margin_primary"
+                            android:text="@string/app_name" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/themeCard"
+                    style="@style/BaseCardView"
+                    android:layout_marginTop="@dimen/margin_primary">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="@dimen/padding_secondary">
+
+                        <ImageView
+                            style="@style/Icon"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="@dimen/margin_secondary"
+                            android:src="@drawable/vector_dark"
+                            app:tint="?attr/colorOnSecondaryContainer" />
+
+                        <TextView
+                            style="@style/OnSecondaryContent"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:text="@string/dark_theme"
+                            android:textSize="@dimen/size2" />
+
+                        <com.google.android.material.materialswitch.MaterialSwitch
+                            android:id="@+id/themeSwitch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end|center_vertical"
+                            android:scaleX="0.6"
+                            android:scaleY="0.6" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/exitCard"
+                    style="@style/BaseCardView"
+                    android:layout_marginTop="@dimen/margin_primary">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/padding_secondary">
+
+                        <ImageView
+                            style="@style/Icon"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="@dimen/margin_secondary"
+                            android:src="@drawable/baseline_exit_to_app_24"
+                            app:tint="?attr/colorOnSecondaryContainer" />
+
+                        <TextView
+                            style="@style/OnSecondaryContent"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:text="@string/logout"
+                            android:textSize="@dimen/size2" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </com.google.android.material.card.MaterialCardView>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </com.google.android.material.navigation.NavigationView>
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

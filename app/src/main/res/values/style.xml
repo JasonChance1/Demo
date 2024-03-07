@@ -13,7 +13,10 @@
         <item name="android:layout_height">@dimen/avatar_size</item>
         <item name="shapeAppearance">@style/CircleImage</item>
     </style>
-
+    <style name="SmallAvatar" parent="CircleAvatar">
+        <item name="android:layout_width">@dimen/small_avatar_size</item>
+        <item name="android:layout_height">@dimen/small_avatar_size</item>
+    </style>
     <style name="Icon">
         <item name="android:layout_width">@dimen/icon_size</item>
         <item name="android:layout_height">@dimen/icon_size</item>

@@ -6,12 +6,14 @@ import com.example.demo.database.AppDatabase
 import com.example.demo.database.entity.User
 import com.example.demo.databinding.ActivityLoginBinding
 import com.example.demo.util.EasyDataStore
+import com.example.demo.util.PermissionUtil
 import com.example.demo.view.base.BaseActivity
 import com.example.demo.view.widget.CustomSnackBar
 
 class LoginActivity : BaseActivity() {
     private lateinit var binding: ActivityLoginBinding
     private val userDao = AppDatabase.get().userDao()
+    private val permissionUtil = PermissionUtil()
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -23,6 +25,13 @@ class LoginActivity : BaseActivity() {
     }
 
     private fun initView() {
+        if(!permissionUtil.isExternalStoragePermission()){
+            permissionUtil.requestExternalStoragePermission()
+        }
+
+        if(!permissionUtil.isStorageManagerPermission()){
+            permissionUtil.requestStorageManagerPermission(this)
+        }
         val username = EasyDataStore.getData("username", "")
         val password = EasyDataStore.getData("password", "")
         if (EasyDataStore.getData("autoLogin", false)) {
