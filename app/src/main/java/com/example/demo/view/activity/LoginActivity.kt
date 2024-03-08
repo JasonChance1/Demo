@@ -1,14 +1,17 @@
 package com.example.demo.view.activity
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.provider.Settings
 import com.example.demo.database.AppDatabase
 import com.example.demo.database.entity.User
 import com.example.demo.databinding.ActivityLoginBinding
 import com.example.demo.util.EasyDataStore
 import com.example.demo.util.PermissionUtil
+import com.example.demo.util.showError
+import com.example.demo.util.showSuccess
 import com.example.demo.view.base.BaseActivity
-import com.example.demo.view.widget.CustomSnackBar
 
 class LoginActivity : BaseActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -32,6 +35,15 @@ class LoginActivity : BaseActivity() {
         if(!permissionUtil.isStorageManagerPermission()){
             permissionUtil.requestStorageManagerPermission(this)
         }
+        if(!permissionUtil.isAlertPermission()){
+            permissionUtil.requestAlertPermission()
+        }
+
+        if (!Settings.canDrawOverlays(this)) {
+            val intent = Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:$packageName"))
+            startActivity(intent) // 使用startActivity()替代过时的startActivityForResult()，如果你不需要在Activity返回时接收结果
+        }
+
         val username = EasyDataStore.getData("username", "")
         val password = EasyDataStore.getData("password", "")
         if (EasyDataStore.getData("autoLogin", false)) {
@@ -58,8 +70,8 @@ class LoginActivity : BaseActivity() {
             val username = binding.username.text.toString().trim()
             val password = binding.password.text.toString().trim()
             when {
-                username.isEmpty() -> CustomSnackBar(this, "请输入用户名").showError()
-                password.isEmpty() -> CustomSnackBar(this, "请输入密码").showError()
+                username.isEmpty() -> this.showError("请输入用户名")
+                password.isEmpty() -> this.showError("请输入密码")
                 else -> {
                     userDao.findByUsername(username)?.let {
                         if (password == it.password) {
@@ -72,13 +84,14 @@ class LoginActivity : BaseActivity() {
                                 EasyDataStore.putData("username", username)
                                 EasyDataStore.putData("remember", true)
                             }
+                            this.showSuccess("登录成功")
                             startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
                             finish()
                         } else {
-                            CustomSnackBar(this, "请检查用户名密码是否匹配").showError()
+                            this.showError("请检查用户名密码是否匹配")
                         }
                     } ?: kotlin.run {
-                        CustomSnackBar(this, "该账号尚未注册").show()
+                        this.showError("该账号尚未注册")
                     }
                 }
 
@@ -100,21 +113,20 @@ class LoginActivity : BaseActivity() {
             val confirmPassword = binding.confirmPassword.text.toString().trim()
 
             when {
-                username.isEmpty() -> CustomSnackBar(this, "请输入用户名").showError()
-                password.isEmpty() -> CustomSnackBar(this, "请输入密码").showError()
-                confirmPassword.isEmpty() -> CustomSnackBar(this, "请确认密码").showError()
-                password != confirmPassword -> CustomSnackBar(this, "两次密码不一致").showError()
+                username.isEmpty() -> this.showError("请输入用户名")
+                password.isEmpty() -> this.showError("请输入密码")
+                confirmPassword.isEmpty() -> this.showError("请确认密码")
+                password != confirmPassword -> this.showError("两次密码不一致")
                 else -> {
                     userDao.findByUsername(username)?.let {
-                        CustomSnackBar(this, "该账号已被注册").showError()
+                        this.showError("该账号已被注册")
                     } ?: run {
                         userDao.insert(
                             User(
                                 0, username, password
                             )
                         )
-
-                        CustomSnackBar(this, "注册成功").showSuccess()
+                        this.showSuccess("注册成功")
                         binding.transformationLayout.finishTransform()
                         binding.username.setText(username)
                         binding.password.setText(password)

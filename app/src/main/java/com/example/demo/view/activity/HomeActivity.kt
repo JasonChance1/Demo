@@ -11,7 +11,6 @@ import com.example.demo.util.EasyDataStore
 import com.example.demo.view.base.BaseActivity
 import com.example.demo.view.fragment.HomeFragment
 import com.example.demo.view.fragment.MineFragment
-import kotlin.properties.Delegates
 
 class HomeActivity : BaseActivity() {
     private lateinit var binding: ActivityHomeBinding

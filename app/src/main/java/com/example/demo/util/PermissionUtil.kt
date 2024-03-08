@@ -68,7 +68,13 @@ class PermissionUtil {
     fun requestCameraPermission(){
         PermissionUtils.permission(*cameraPermission).request()
     }
+    fun requestAlertPermission(){
+        PermissionUtils.permission(Manifest.permission.SYSTEM_ALERT_WINDOW)
+    }
 
+    fun isAlertPermission(): Boolean {
+        return PermissionUtils.isGranted(Manifest.permission.SYSTEM_ALERT_WINDOW)
+    }
     private val externalStoragePermission = arrayOf(
         Manifest.permission.READ_EXTERNAL_STORAGE,
         Manifest.permission.WRITE_EXTERNAL_STORAGE
