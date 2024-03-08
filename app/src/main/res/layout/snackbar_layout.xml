@@ -2,7 +2,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/shape_snackbar"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/snackBar"
+    android:background="@drawable/round_8"
+    android:backgroundTintMode="screen"
+    android:backgroundTint="@color/md_theme_secondaryContainer"
     android:padding="8dp">
 
     <LinearLayout
@@ -17,6 +21,7 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginEnd="8dp"
+            app:tint="@color/md_theme_onSecondaryContainer"
             android:src="@drawable/vector_notice"
             android:importantForAccessibility="no" />
 
@@ -24,9 +29,8 @@
             android:id="@+id/snackbar_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
+            android:textColor="@color/md_theme_onSecondaryContainer"
             android:text="提示"
-            android:layout_gravity="center_horizontal"
-            android:textAlignment="center" />
+            android:layout_gravity="center_vertical" />
     </LinearLayout>
 </FrameLayout>

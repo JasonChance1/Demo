@@ -1,7 +1,6 @@
 package com.example.demo.view.base
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.demo.R
 import com.example.demo.util.EasyDataStore
@@ -18,7 +17,6 @@ open class BaseActivity : AppCompatActivity() {
         val theme = EasyDataStore.getData("theme", R.style.AppTheme)
         // 设置当前Activity的主题
         setTheme(theme)
-        // 调用super.onCreate来完成Activity的初始化
         super.onCreate(savedInstanceState)
     }
 }

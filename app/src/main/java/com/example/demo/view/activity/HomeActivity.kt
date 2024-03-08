@@ -8,10 +8,10 @@ import com.example.demo.R
 import com.example.demo.adapter.ViewPagerAdapter
 import com.example.demo.databinding.ActivityHomeBinding
 import com.example.demo.util.EasyDataStore
+import com.example.demo.util.showNotice
 import com.example.demo.view.base.BaseActivity
 import com.example.demo.view.fragment.HomeFragment
 import com.example.demo.view.fragment.MineFragment
-import kotlin.properties.Delegates
 
 class HomeActivity : BaseActivity() {
     private lateinit var binding: ActivityHomeBinding
@@ -23,6 +23,7 @@ class HomeActivity : BaseActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
+//        this.showNotice("测试")
         initData()
         initView()
         bindEvent()
